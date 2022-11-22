@@ -10,6 +10,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.PAT }}
     - name: get-latest-version
       run: |
         VERSION="$(wget 2>/dev/null -qSO- https://dl.winehq.org/wine-builds/ubuntu/dists/jammy/main/binary-amd64/ | grep wine-staging | sed 's|_| |g;s|~| |g' | awk '{print $5}' | tail -n1)"
